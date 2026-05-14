@@ -1,8 +1,12 @@
-import random
-# Actual Freq of signal
-omega0 = random.uniform(omega_lower_bound+1, omega_upper_bound-1) # rads/sec
-# actual phase offset
-phi_true = random.uniform(0,1)*(2*np.pi)  # varied phase offset
+import numpy as np
 
-f0 = omega0/(2*np.pi) # Hz
-T0 = 1/f0  # period in secs
+def get_truth(lb, ub, seed=42):
+    rng = np.random.default_rng(seed)
+
+    omega0 = rng.uniform(lb + 1, ub - 1)   # rads/sec
+    phi_true = rng.uniform(0, 2*np.pi)
+
+    f0 = omega0 / (2*np.pi)
+    T0 = 1 / f0
+
+    return omega0, f0, T0, phi_true
