@@ -82,6 +82,14 @@ def setup_environment(
         "ignore",
         message="This figure includes Axes that are not compatible with tight_layout"
     )
+    warnings.filterwarnings(
+        "ignore",
+        message="divide by zero encountered in divide"
+    )
+    warnings.filterwarnings(
+        "ignore",
+        message="invalid value encountered in divide"
+    )
 
 def _set_numpy_print_options():
     np.set_printoptions(formatter={"float": "{: 8.3f}".format})
