@@ -1,0 +1,154 @@
+% !TeX root = 16_002_Fall24.tex
+\def\Lect{I}
+\usepackage[OT2,T1]{fontenc}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{graphicx,color,multirow,subcaption,wrapfig,amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{lmodern,array,stackrel,esint,textgreek}
+
+\usepackage[pdftex, bookmarksopen=true, colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue,filecolor=blue, pagebackref=false, hypertexnames=false, plainpages=false, pdfpagelabels ]{hyperref}
+
+\usepackage{etex,setspace,pbox}
+\let\checkmark\relax 
+\usepackage{dingbat,wasysym,ifpdf,pdfpages,mathtools,xcolor}
+\usepackage{listings}
+\lstset{ 
+    basicstyle=\ttfamily\scriptsize,    % The basic font style
+    language=Python,                     % Default language for the Python listings below
+    numbers=left,                        % Show line numbers
+    numberstyle=\tiny\color{gray},      % Style for line numbers
+    keywordstyle=\color{blue},            % Keywords color
+    stringstyle=\color{magenta},              % Strings color
+    numbersep=10pt,                       % Distance between line numbers and code
+    backgroundcolor=\color{lightgray!10}, % Background color for the code block
+    frame=single,                         % Frame around the code
+    showstringspaces=false,               % Don't mark spaces inside strings
+    breakatwhitespace=true,               % Break lines only at whitespace
+    captionpos=b,                         % Caption position (b for below, t for above)
+    escapeinside={\%*}{*)},               % Allows escaping to LaTeX within code
+}
+
+
+\usepackage[thicklines]{cancel}
+\usepackage[mmddyy,nodayofweek,12hr]{datetime}
+\usepackage{algorithm,algorithmic,blkarray}
+\usepackage{textcomp,latexsym,amssymb,aircraftshapes}
+\usepackage{pagecolor}% http://ctan.org/pkg/{pagecolor,lipsum}
+\usepackage[percent]{overpic}
+\usepackage{cleveref}
+
+% removes beamer captions
+\usepackage{caption}
+%\captionsetup{labelformat=empty,labelsep=none}
+%\renewcommand{\figurename}{} 
+
+\usepackage[round, comma]{natbib}       % use Natbib for author-name
+                                        % citations. In a presentation,
+                                        % this is more legible than pure
+                                        % numbers, like [21]. Google
+                                        % "natbib" for more information.
+                                        % Instead of "\cite{abc}", use
+                                        % "\citep{abc}" or "\citet{abc}"
+\bibliographystyle{abbrvnat}            % Natbib specific
+%\bibliographystyle{ieeetr}            % Natbib specific
+%\bibpunct{(}{)}{,}{a}{}{,}              % Natbib specific
+\bibpunct{[}{]}{,}{a}{}{,}              % Natbib specific
+\setlength{\bibhang}{10pt}
+\setlength{\bibsep}{1pt}%
+
+\makeatletter
+\DeclareRobustCommand\citep
+{\begingroup\tiny\NAT@swatrue\let\NAT@ctype\z@\NAT@partrue
+	\@ifstar{\NAT@fulltrue\NAT@citetp}{\NAT@fullfalse\NAT@citetp}}
+\makeatother
+
+\newif\ifPDF
+\ifx\pdfoutput\undefined\PDFfalse \else\ifnum\pdfoutput > 0 \PDFtrue
+\else\PDFfalse \fi \fi
+
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{calc,fadings,decorations.pathreplacing,quotes,angles,shapes,positioning,automata,arrows,fit,backgrounds,calc,shapes.misc,trees}
+\usetikzlibrary{decorations.pathmorphing,decorations.text,decorations.markings,patterns}
+%\tikzstyle{block} = [draw, fill=blue!20, rectangle,minimum height=1em, minimum width=2em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\tikzstyle{block} = [draw, fill=blue!20, rectangle,  minimum height=3em, minimum width=6em]
+\tikzstyle{sblock} = [draw, fill=blue!20, rectangle,  minimum height=1em, minimum width=2em]
+\tikzstyle{int}=[draw, fill=blue!20, minimum size=5em]
+\tikzstyle{init} = [pin edge={to-,thin,black}]
+
+\usetikzlibrary{decorations.pathmorphing,patterns} % springs
+\usetikzlibrary{spy}
+
+\usetikzlibrary{circuits.ee.IEC, positioning}
+\usepackage[american voltages, american currents,siunitx]{circuitikz}
+
+\tikzset{My Arrow Style/.style={single arrow, fill=red!50, anchor=base, align=center,text width=2.8cm}}
+\newcommand{\MyArrow}[2][]{\tikz[baseline] \node [My Arrow Style,#1] {#2};}
+
+\usepackage[most]{tcolorbox}
+\tcbset{fonttitle=\sffamily\bfseries\Large}
+\tcbuselibrary{theorems}
+\tcbset{
+defstyle/.style={fonttitle=\bfseries\upshape\scriptsize, fontupper=\slshape\footnotesize, fontlower=\footnotesize,arc=0mm, colback=blue!0,colframe=blue!55!red},
+theostyle/.style={fonttitle=\bfseries\upshape, fontupper=\slshape\footnotesize,fontlower=\footnotesize,colback=blue!10,colframe=blue!85!black},
+}
+%\tcbmaketheorem{defin}{Definition}{defstyle}{mytheorem}{def}
+%\tcbmaketheorem{thm}{Theorem}{theostyle}{mytheorem}{theo}
+
+\usepackage{titlesec}
+% spacing: how to read {12pt plus 4pt minus 2pt}
+%           12pt is what we would like the spacing to be
+%           plus 4pt means that TeX can stretch it by at most 4pt
+%           minus 2pt means that TeX can shrink it by at most 2pt
+%       This is one example of the concept of, 'glue', in TeX
+%\titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
+\titlespacing\section{0pt}{0pt plus 4pt minus 2pt}{-2pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{6pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{6pt plus 4pt minus 2pt}{-12pt plus 2pt minus 2pt}
+
+\usepackage{tocloft}
+\setlength\cftparskip{-2pt}
+\setlength\cftbeforesecskip{1pt}
+\setlength\cftaftertoctitleskip{2pt}
+
+\usepackage{empheq}
+%\usepackage[most]{tcolorbox}
+\newtcbox{\mymath}[1][]{%
+	nobeforeafter, math upper, tcbox raise base,
+	enhanced, colframe=blue!30!black,
+	colback=blue!30, boxrule=1pt,
+	#1}
+	
+\pgfplotsset{
+	tick label style={font=\small},  
+	legend entry/.initial=,
+	every axis plot post/.code={%
+		\pgfkeysgetvalue{/pgfplots/legend entry}\tempValue
+		\ifx\tempValue\empty
+%		\pgfkeysalso{/pgfplots/forget plot}%
+		\else
+		\expandafter\addlegendentry\expandafter{\tempValue}%
+		\fi
+	},
+}
+
+\usepackage{polynom}
+\polyset{vars=s} % make X, Y, Z, and \xi into variables	
+
+\author{Jonathan P. How\\ Massachusetts Institute of Technology\\ 
+\texttt{jhow@mit.edu}}
+\date{}
+\newcounter{lect}
+\counterwithin{figure}{lect}
+\renewcommand{\thesection}{\thelect.\arabic{section}}
+\usepackage{titling}
+\usepackage{titletoc}
+\dottedcontents{subsection}[5.5em]{}{3.2em}{1pc}
+\dottedcontents{section}[1cm]{}{3em}{1em}
