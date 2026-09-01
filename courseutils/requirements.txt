@@ -1,0 +1,17 @@
+numpy
+scipy
+matplotlib
+sympy
+pandas
+ipywidgets
+lcapy
+control
+icecream
+librosa
+pyaudio
+sounddevice
+rich
+tqdm
+python-pptx
+jupyter
+ipykernel
